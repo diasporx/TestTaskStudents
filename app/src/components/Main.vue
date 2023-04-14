@@ -31,11 +31,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/scss/colors.scss';
 .container {
   padding-top: 48px;
+  padding-bottom: 40px;
 }
 
 .search-box {
+  display: flex;
+  background-color: $white;
+  border: 1px solid $blue-super-light;
+  border-radius: 4px;
   .layout {
     margin: 16.5px 16px;
     display: flex;

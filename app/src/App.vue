@@ -51,6 +51,7 @@ export default {
 }
 body {
   font-family: 'Proxima Nova', sans-serif;
+  background-color: $blue-super-light;
 }
 .container {
   padding: 0 60px;
