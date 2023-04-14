@@ -1,27 +1,60 @@
 <template>
-  <h1>test</h1>
+  <div class="container">
+
+    <h1 class="mb-20">Список заявлений</h1>
+
+    <!--    Search-->
+    <div class="search-box">
+      <div class="layout">
+        <iconSearch class="iconSearch"/>
+        <input type="text" class="search" placeholder="Поиск">
+      </div>
+    </div>
+    <!--    Search-->
+
+    <!--    table-->
+    <Table/>
+    <!--    table-->
+
+  </div>
 </template>
 
 <script>
+import iconSearch from '@/components/__include/icons/search'
+
+import Table from '@/components/Table'
+
 export default {
   name: 'Main',
+  components: {iconSearch, Table},
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+.container {
+  padding-top: 48px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+.search-box {
+  .layout {
+    margin: 16.5px 16px;
+    display: flex;
+
+    .iconSearch {
+      margin-right: 8px;
+    }
+
+    input.search {
+      width: 100%;
+      font-family: 'Proxima Nova', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      box-shadow: none;
+      outline: none;
+      border: none;
+    }
+  }
 }
 </style>
