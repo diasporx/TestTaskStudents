@@ -1,0 +1,145 @@
+@import '@/assets/scss/colors.scss';
+
+table {
+  width: 100%;
+  border-spacing: 0 4px;
+  font-family: 'Proxima Nova', sans-serif;
+
+  tr th {
+    text-align: left;
+    color: $blue;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  tbody tr {
+    transition: all .3s ease;
+    background-color: $white;
+    //margin-bottom: 4px;
+
+    td {
+      transition: all .3s ease;
+      border-right: 2px solid $blue-super-light;
+    }
+
+    td:last-child {
+      border-right: 0;
+    }
+  }
+
+  tbody tr:hover {
+    td {
+      border-right: 2px solid $blue-light;
+    }
+    td:last-child {
+      border-right: 0;
+    }
+    background-color: $blue-super-light;
+  }
+
+  tr td {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    &:last-child, & th:last-child {
+      text-align: center;
+    }
+  }
+
+  tr th, tr td {
+    padding: 23.5px 20px;
+  }
+
+  td.bold {
+    font-weight: 700;
+  }
+
+  td.high {
+    color: $green;
+    #section1 .item {
+      background-color: $green;
+    }
+  }
+
+  td.medium {
+    color: $orange;
+    #section1 .item {
+      background-color: $orange;
+    }
+  }
+
+  td.low {
+    color: $red;
+    #section1 .item {
+      background-color: $red;
+    }
+  }
+
+  .circle-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    span {
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+      color: $black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: $white;
+        border-radius: 50%;
+        width: 34.5px;
+        height: 34.5px;
+        margin-left: 0.7px;
+        margin-top: -0.5px;
+        z-index: -1;
+      }
+    }
+
+    .clip {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      clip: rect(0px, 40px, 40px, 20px);
+      position: absolute;
+
+      .item {
+        border-radius: 50%;
+        clip: rect(0px, 20px, 40px, 0px);
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        font-family: monospace;
+        font-size: 1.5rem;
+      }
+    }
+
+    #section1 {
+      transform: rotate(0deg);
+
+      .item {
+        background-color: #E64C65;
+        transform: rotate(180deg);
+      }
+    }
+
+    #section2 {
+      transform: rotate(180deg);
+
+      .item {
+        background-color: $blue-light;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

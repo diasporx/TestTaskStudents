@@ -7,13 +7,13 @@
     <div class="search-box">
       <div class="layout">
         <iconSearch class="iconSearch"/>
-        <input type="text" class="search" placeholder="Поиск">
+        <input type="text" v-model="searchTerm" class="search" placeholder="Поиск">
       </div>
     </div>
     <!--    Search-->
 
     <!--    table-->
-    <Table/>
+    <Table :data="filteredData"/>
     <!--    table-->
 
   </div>
@@ -21,17 +21,64 @@
 
 <script>
 import iconSearch from '@/components/__include/icons/search'
-
+import { mapState, mapMutations, mapActions } from 'vuex';
 import Table from '@/components/Table'
 
 export default {
   name: 'Main',
   components: {iconSearch, Table},
+  data() {
+    return {
+      searchTerm: localStorage.getItem('searchTerm') || '',
+    }
+  },
+  computed: {
+    ...mapState(['data', 'sortOrder', 'sortColumn']),
+    filteredData() {
+      return this.data.filter(item => {
+        return item.name.includes(this.searchTerm) || item.date.includes(this.searchTerm);
+      });
+    }
+  },
+  methods: {
+    ...mapMutations(['updateSearchTerm', 'setSortOrder']),
+    ...mapActions(['sortData']),
+    handleSort(column) {
+      if (this.sortColumn === column) {
+        this.setSortOrder({ sortOrder: this.sortOrder === 'asc' ? 'desc' : 'asc', sortColumn: column });
+      } else {
+        this.setSortOrder({ sortOrder: 'asc', sortColumn: column });
+      }
+      this.sortData();
+    }
+  },
+  beforeMount() {
+    const sortOrder = localStorage.getItem('sortOrder')
+    const sortColumn = localStorage.getItem('sortColumn')
+    this.$store.commit('setSortOrder', {
+      sortOrder: sortOrder || '',
+      sortColumn: sortColumn || ''
+    });
+    if(sortOrder === 'Score' || sortOrder === 'Procent') {
+
+    } else {
+      this.sortData();
+    }
+  },
+  watch: {
+    searchTerm: {
+      handler(newValue) {
+        this.$store.commit('updateSearchTerm', this.searchTerm)
+      },
+      deep: true
+    },
+  }
 }
 </script>
 
 <style scoped lang="scss">
 @import '@/assets/scss/colors.scss';
+
 .container {
   padding-top: 48px;
   padding-bottom: 40px;
@@ -42,9 +89,11 @@ export default {
   background-color: $white;
   border: 1px solid $blue-super-light;
   border-radius: 4px;
+
   .layout {
     margin: 16.5px 16px;
     display: flex;
+    width: 100%;
 
     .iconSearch {
       margin-right: 8px;
