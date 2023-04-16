@@ -34,7 +34,10 @@ const store = new Vuex.Store({
                 return state.sortOrder === 'asc' ? compareResult : -compareResult;
             });
         },
-        sortDataByTotalScore(state, payload) {
+        sortDataByTotalScore(state, payload, direct) {
+            if(direct) {
+                console.log(direct)
+            }
             state.sortColumn = 'Score'
             if (state.sortOrder === 'asc') {
                 state.data = payload.data.sort((a, b) => {
@@ -57,6 +60,7 @@ const store = new Vuex.Store({
             localStorage.setItem('sortOrder', state.sortOrder);
         },
         sortDataByPercentage(state, payload) {
+            console.log(state, payload)
             state.sortColumn = 'Procent'
             if (state.sortOrder === 'asc') {
                 state.data = payload.data.sort((a, b) => {

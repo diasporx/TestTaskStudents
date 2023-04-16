@@ -59,8 +59,13 @@ export default {
       sortOrder: sortOrder || '',
       sortColumn: sortColumn || ''
     });
-    if(sortOrder === 'Score' || sortOrder === 'Procent') {
-
+    if(this.$store.state.sortColumn === 'Score') {
+      console.log('Score')
+      this.$store.commit('sortDataByTotalScore', { data: this.$store.state.data, getters: this.$store.getters })
+      this.$store.commit('sortDataByTotalScore', { data: this.$store.state.data, getters: this.$store.getters })
+    } else if(this.$store.state.sortColumn === 'Procent') {
+      this.$store.commit('sortDataByPercentage', { data: this.$store.state.data, getters: this.$store.getters })
+      this.$store.commit('sortDataByPercentage', { data: this.$store.state.data, getters: this.$store.getters })
     } else {
       this.sortData();
     }
