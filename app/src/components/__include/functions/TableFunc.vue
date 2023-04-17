@@ -130,10 +130,11 @@ export default {
     // ScoreSum
     calculateTotalScore(student) {
       let totalScore = 0;
+      totalScore.toFixed(1)
       student.subjects.forEach(score => {
         totalScore += parseFloat(score.score);
       });
-      return totalScore.toFixed(1);
+      return totalScore;
     },
     // ScoreSum
 

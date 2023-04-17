@@ -118,7 +118,7 @@
           </td>
           <td data-label="Суммарный балл">
             <span :class="`bold `+ getClass('percent', calculatePercentage(student))">{{
-                calculateTotalScore(student)
+                calculateTotalScore(student).toFixed(1)
               }}</span>
           </td>
           <td data-label="Процент">
