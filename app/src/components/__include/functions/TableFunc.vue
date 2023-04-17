@@ -10,28 +10,24 @@ export default {
   },
   computed: {
     sortedStudents() {
-      if (this.sortKey) {
-        return this.students.sort((a, b) => {
-          const valA = this.getValueBySortKey(a);
-          const valB = this.getValueBySortKey(b);
-          if (valA < valB) return -1 * this.sortDirection;
-          if (valA > valB) return this.sortDirection;
-          return 0;
-        });
-      } else {
-        return this.students;
-      }
-    },
-    filteredStudents() {
       const searchInput = this.SearchInp.toLowerCase();
-      return this.sortedStudents.filter(student => {
-        return student.name.toLowerCase().includes(searchInput);
-      });
+      return this.students
+          .filter(student => student.name.toLowerCase().includes(searchInput))
+          .sort((a, b) => {
+            if (!this.sortKey) {
+              return 0;
+            }
+            const valA = this.getValueBySortKey(a);
+            const valB = this.getValueBySortKey(b);
+            const compare = valA === valB ? 0 : (valA < valB ? -1 : 1);
+            if (this.sortKey === 'percentage') {
+              return this.sortDirection * (compare === 0 ? compare : parseFloat(valA) - parseFloat(valB));
+            }
+            return this.sortDirection * compare;
+          });
     }
   },
   methods: {
-
-
     // circleDynamicPercentage
     updateDonutChildren(percent) {
       let offset;
@@ -124,7 +120,10 @@ export default {
 
     // Score
     getSubjectScore(student, subject) {
-      return student.subjects.find(score => score.subject === subject).score;
+      let subjectScore = student.subjects.find(score => score.subject === subject);
+      if (subjectScore) {
+        return parseFloat(subjectScore.score).toFixed(1);
+      }
     },
     // Score
 
@@ -134,7 +133,7 @@ export default {
       student.subjects.forEach(score => {
         totalScore += parseFloat(score.score);
       });
-      return totalScore;
+      return totalScore.toFixed(1);
     },
     // ScoreSum
 
