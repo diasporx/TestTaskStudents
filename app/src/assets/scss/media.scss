@@ -22,6 +22,7 @@
     .btns_Group-mobile {
       display: flex;
       gap: 4px;
+
       button {
         cursor: pointer;
         padding: 18px 18.5px;
@@ -112,6 +113,12 @@
   .table-container table tbody tr:hover {
     background-color: transparent;
   }
+  .table-container table {transition: none}
+  .table-container table tbody tr:hover td {border-right: none;}
+  .table-container table tbody tr td {
+    transition: all 0.3s ease;
+    border-right: none;
+  }
   table tbody td {
     display: flex;
     white-space: normal;
@@ -119,12 +126,15 @@
     background-color: $white;
     margin-bottom: 2px;
   }
+
   table tbody td > * {
     width: 100%;
   }
+
   .table-container table tbody tr td {
     padding: 9px 12px;
   }
+
   table tbody td::before {
     min-width: 50%;
     content: attr(data-label);
@@ -132,6 +142,7 @@
     font-weight: 700;
     font-size: 12px;
   }
+
   .clip {
     display: none
   }
