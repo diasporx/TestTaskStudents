@@ -94,11 +94,11 @@
     "date": "2023-02-02",
     "subjects": [{
       "subject": "Русский язык",
-      "score": "4"
+      "score": "1"
     },
       {
         "subject": "Математика",
-        "score": "2"
+        "score": "1"
       },
       {
         "subject": "Информатика",

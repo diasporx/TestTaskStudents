@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <Header/>
-    <Main/>
+    <Table/>
   </div>
 </template>
 
 <script>
-import Main from './components/Main.vue'
+import Table from './components/Table'
 import Header from './components/Header'
 
 export default {
   name: 'App',
   components: {
-    Main, Header
+    Table, Header
   },
 }
 </script>
@@ -68,6 +68,28 @@ h3 {
   font-size: 16px;
   line-height: 18px;
 }
+.text-big {
+  font-weight: 400;
+  font-size: 16px;
+}
+.text-normal {
+  font-weight: 400;
+  font-size: 14px;
+}
+.text-normal-bold {
+  font-weight: 700;
+  font-size: 14px;
+}
+.caption-bold {
+  font-weight: 700;
+  font-size: 12px;
+}
+.caption-mini {
+  font-weight: 400;
+  font-size: 11px;
+}
+.text-left {text-align: left}
+.text-right {text-align: right}
 .mb-20 {
   margin-bottom: 20px;
 }

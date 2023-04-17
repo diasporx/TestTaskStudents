@@ -3,16 +3,16 @@
 
     <logo/>
 
-    <div class="account">
+    <account />
 
-    </div>
   </header>
 </template>
 <script>
-import logo from './__include/logo'
+import logo from './UI/Header/logo'
+import account from './UI/Header/account'
 export default {
   name: 'Header',
-  components: {logo}
+  components: {logo, account}
 }
 </script>
 <style lang="scss" scoped>
