@@ -3,13 +3,13 @@
     <span :style="{ 'font-size': sort !== '' ? '11px' : '14px', 'top': sort !== '' ? '7px' : '' }">Сортировать по</span>
     <span>{{ InitializeSort(sort) }}</span>
     <ul v-if="menu" class="menuMobile">
-        <li @click="$parent.sortTable('name')">ФИО</li>
-        <li @click="$parent.sortTable('date')">Дата подачи заявления</li>
-        <li @click="$parent.sortTable('subject1')">Балл по русскому</li>
-        <li @click="$parent.sortTable('subject2')">Балл по математике</li>
-        <li @click="$parent.sortTable('subject3')">Балл по информатике</li>
-        <li @click="$parent.sortTable('totalScore')">Суммарный балл</li>
-        <li @click="$parent.sortTable('percentage')">Процент</li>
+        <li @click="$parent.sortTable('name', 'mobile')">ФИО</li>
+        <li @click="$parent.sortTable('date', 'mobile')">Дата подачи заявления</li>
+        <li @click="$parent.sortTable('subject1', 'mobile')">Балл по русскому</li>
+        <li @click="$parent.sortTable('subject2', 'mobile')">Балл по математике</li>
+        <li @click="$parent.sortTable('subject3', 'mobile')">Балл по информатике</li>
+        <li @click="$parent.sortTable('totalScore', 'mobile')">Суммарный балл</li>
+        <li @click="$parent.sortTable('percentage', 'mobile')">Процент</li>
     </ul>
   </div>
 </template>

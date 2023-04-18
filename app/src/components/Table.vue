@@ -14,8 +14,12 @@
     <div class="box__mobileSorting">
       <selectSort :sort="sortKey" :direction="sortDirection" />
       <div class="btns_Group-mobile">
-        <button @click="sortDirection = -1" :style="{'background-color': sortDirection === -1 ? '#006CFE' : 'transparent'}"><init-arrows :sortDir="-1" :arrowColor="sortDirection === -1 ? '#FFF' : '#006CFE'" /></button>
-        <button @click="sortDirection = 1" :style="{'background-color': sortDirection === 1 ? '#006CFE' : 'transparent'}"><init-arrows :sortDir="1" :arrowColor="sortDirection === 1 ? '#FFF' : '#006CFE'" /></button>
+        <button @click="sortDirection = -1;" :style="{'background-color': sortDirection === -1 ? '#006CFE' : 'transparent'}">
+          <init-arrows :sortDir="-1" :arrowColor="sortDirection === -1 ? '#FFF' : '#006CFE'" />
+        </button>
+        <button @click="sortDirection = 1;" :style="{'background-color': sortDirection === 1 ? '#006CFE' : 'transparent'}">
+          <init-arrows :sortDir="1" :arrowColor="sortDirection === 1 ? '#FFF' : '#006CFE'" />
+        </button>
       </div>
     </div>
 <!--    mobileSorting-->
@@ -167,7 +171,7 @@ export default {
       students: require('../data/file.json'),
       sortKey: '',
       hoverColor: '#006CFE',
-      sortDirection: 1
+      sortDirection: localStorage.getItem('sortDirection') ? localStorage.getItem('sortDirection') : '1'
     }
   },
   methods: {
@@ -180,6 +184,13 @@ export default {
       }
     },
     // changeColorArrows
+  },
+  watch: {
+    sortDirection: {
+      handler(newValue) {
+        localStorage.setItem('sortDirection', newValue)
+      }
+    }
   }
 }
 </script>

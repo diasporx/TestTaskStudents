@@ -83,12 +83,19 @@ export default {
     // GetClass colors
 
     // sortable
-    sortTable(key) {
-      if (this.sortKey === key) {
-        this.sortDirection *= -1;
+    sortTable(key, device) {
+      if (device) {
+        if (this.sortKey !== key){
+          this.sortKey = key;
+          localStorage.setItem('sortKey', this.sortKey);
+        }
       } else {
-        this.sortKey = key;
-        this.sortDirection = 1;
+        if (this.sortKey === key) {
+          this.sortDirection *= -1;
+        } else {
+          this.sortKey = key;
+          this.sortDirection = 1;
+        }
       }
       localStorage.setItem('sortKey', this.sortKey);
       localStorage.setItem('sortDirection', this.sortDirection);

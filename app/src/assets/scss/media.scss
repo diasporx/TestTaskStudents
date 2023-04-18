@@ -1,11 +1,5 @@
 @import '@/assets/scss/colors.scss';
 
-@media screen and (min-width: 1360px) {
-  table tr th:nth-child(1) {
-    min-width: 415px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   table tr td:nth-child(1) {
     white-space: nowrap;
